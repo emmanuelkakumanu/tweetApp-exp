@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 public class UserDao {
 	private String firstName;
@@ -14,8 +13,6 @@ public class UserDao {
 	private String email;
 	private String password;
 	private String loggedIn;
-//	public Connection con = null;
-//	public PreparedStatement ps = null;
 
 	public UserDao() {
 		super();
@@ -95,13 +92,11 @@ public class UserDao {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tweetapp", "root", "root");
 			PreparedStatement ps = con.prepareStatement("select count(email) as total from users where email=?");
-//			int c= con.prepareStatement("select count(email) as total from users where email=?");
 			ps.setString(1, email);
 			ResultSet rs = ps.executeQuery();
 			rs.next();
-			int c=rs.getInt("total");
-			System.out.println(c);
-			if (c==0) {
+			int c = rs.getInt("total");
+			if (c == 0) {
 				ps = con.prepareStatement(
 						"insert into users(first_name,last_name,gender,date_of_birth,email,password) values(?,?,?,?,?,?)");
 				ps.setString(1, fn);
@@ -182,10 +177,6 @@ public class UserDao {
 				ps = con.prepareStatement("select * from users");
 				rs = ps.executeQuery();
 				return rs;
-//				System.out.println("List Of Users :");
-//				while (rs.next()) {
-//					System.out.println(rs.getString(5));
-//				}
 			}
 		} catch (Exception e) {
 			System.out.println(e);

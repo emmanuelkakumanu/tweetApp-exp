@@ -70,9 +70,6 @@ public class TweetDao {
 			ps.setString(1, email);
 			ResultSet rs = ps.executeQuery();
 			return rs;
-//			while (rs.next()) {
-//				System.out.println("You posted : ");
-//				System.out.println(rs.getString(1));
 
 		} catch (Exception e) {
 			System.out.println(e);
@@ -92,9 +89,6 @@ public class TweetDao {
 			if (loggedIn.equalsIgnoreCase("true")) {
 				ps = con.prepareStatement("select * from tweets");
 				rs = ps.executeQuery();
-//				while (rs.next()) {
-//					System.out.println(rs.getString(2) + " posted:\n " + rs.getString(1));
-//				}
 				return rs;
 			}
 		} catch (Exception e) {

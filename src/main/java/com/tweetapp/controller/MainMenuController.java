@@ -9,6 +9,7 @@ public class MainMenuController {
 	UserService userService = new UserService();
 	TweetService tweetService = new TweetService();
 	Scanner sc = new Scanner(System.in);
+
 	public void beforeLogin() {
 		int choice = -1;
 		String firstName, lastName, gender, dob, email, password;
@@ -30,7 +31,6 @@ public class MainMenuController {
 				firstName = sc.nextLine();
 				System.out.println("Enter your Last Name :");
 				lastName = sc.nextLine();
-				// sc.nextLine();
 				System.out.println("Enter your Gender(M or F) :");
 				gender = sc.nextLine();
 				System.out.println("Enter your Date Of Birth(dd/mm/YYYY) :");
@@ -83,7 +83,6 @@ public class MainMenuController {
 			System.out.println(
 					"Below are the options you can choose from \n1.Post a tweet.\n2.View my tweets.\n3.View all tweets.\n4.View all users.\n5.Reset Password\n6.Logout");
 			System.out.println("Enter your choice:");
-//			Scanner sc = new Scanner(System.in);
 			try {
 				choice = sc.nextInt();
 			} catch (Exception e) {
